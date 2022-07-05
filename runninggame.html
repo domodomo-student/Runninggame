@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キャットランナー</title>
+    <link rel="stylesheet" href="runninggame.css">
+</head>
+<body>
+    <div class="white-box">
+        <!--タイトルの領域-->
+        <div class="title">
+          キャットランナー
+        </div>
+        <!--ゲームの領域-->
+        <div class="canvas">
+          <canvas id="canvas" width="800" height="400"></canvas>
+        </div>
+        <!--再読み込みボタンの領域-->
+        <div class="reload">
+          <button type="button" onclick="reset()">やり直す</button>
+        </div>
+      </div>
+      <h2>キャットランナーの操作説明</h2>
+      <h3>上矢印キーでジャンプ　下矢印キーで一時停止</h3>
+      <h3>※背景色で難易度が変わります</h3>
+      <h3>難易度　色順　水色(Lv1)→緑(Lv2)→青(Lv3)→紫(Lv4)→赤(Lv5)</h3>
+      <script src="runninggame.js"></script>
+</body>
+</html>
