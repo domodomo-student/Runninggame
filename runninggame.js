@@ -1,8 +1,8 @@
 console.log("難易度　色順　水色(Lv1)→緑(Lv2)→青(Lv3)→紫(Lv4)→赤(Lv5)")//Lv別背景色
-let canvas = document.getElementById("canvas");
+let canvas = document.getElementById("canvas");//キャンバス描画ができるようにする
 let box = canvas.getContext("2d");
-let id = setInterval(draw, 10);
-setInterval(c, 1);
+let id = setInterval(draw, 10);//drawのインターバル設定
+let id1 = setInterval(c, 1);
 setInterval(scores,  1000);
 let playerX = 200;//プレイヤーの初期X座標
 let playerY = 250;//プレイヤーの初期Y座標
@@ -12,13 +12,15 @@ let count = Math.random();//初期スピード
 count = count + 5;
 let score = 0;
 let hard = 1;//ハードモードの初期値
-
 function c() {
         if (objX <= playerX + 80 && objX >= playerX -20 && playerY == 250){//Game Over判定
-            box.font = "50px 'ＭＳ ゴシック'";
-            box.fillStyle = "#000000";
-            box.fillText("GAME OVER...", playerX + 50, playerY - 100, );
-            clearInterval(id);
+            setTimeout(() => {//遅延させる
+                clearInterval(id);
+                box.font = "50px 'ＭＳ ゴシック'";
+                box.fillStyle = "#000000";
+                box.fillText("GAME OVER...", playerX + 50, playerY - 100, );
+                clearInterval(id1);
+              }, 10);
         }
 }
 function draw() {
@@ -45,11 +47,11 @@ function draw() {
     box.font = "30px 'MS ゴシック'";//スコア文字種
     box.fillText("SCORE : " + score, 10, 40,);//スコアの座標
 
-    let player = new Image();
+    let player = new Image();//プレイヤー(猫)
     player.src = "https://3.bp.blogspot.com/-_t105PDFMl4/WR_LHiyapRI/AAAAAAABEds/xAtc3dg1NvkwtXv92BL475SJwkf9-35tQCLcB/s400/run_cat_smile.png";
     box.drawImage(player, playerX, playerY - 30, 100, 100);
 
-    let obj = new Image();
+    let obj = new Image();//オブジェクト(サッカーボール)
     obj.src = "https://3.bp.blogspot.com/-qTxWBfvC9jE/UkJLE3HddxI/AAAAAAAAYNg/xrpj44TzxLo/s800/sport_soccerball.png";
     box.drawImage(obj, objX, objY, 50, 50);
 
@@ -75,20 +77,20 @@ function draw() {
 
     document.onkeydown = keydown;
     function keydown(e) {
-       if(playerY == 250 && e.which == 38) {
+       if(playerY == 250 && e.which == 38) {//上矢印でのジャンプ
           playerY -= 100;
-          setTimeout(() => {
+          setTimeout(() => {//ジャンプ後の着地までのクールタイム
             playerY += 100;
           }, 460);
        }
        if (e.which == 40) {
-        alert("一時停止");
+        alert("一時停止");//下矢印の一時停止
        }
     } 
 }
 function reset(){
-    location.reload();
+    location.reload();//リプレイボタン
 }
 function scores() {
-    score++;//秒
+    score++;//1秒1SCORE
 }
