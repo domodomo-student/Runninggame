@@ -16,10 +16,10 @@ function c() {
         if (objX <= playerX + 80 && objX >= playerX -20 && playerY == 250){//Game Over判定
             setTimeout(() => {//遅延させる
                 clearInterval(id);
+                clearInterval(id1);
                 box.font = "50px 'ＭＳ ゴシック'";
                 box.fillStyle = "#000000";
-                box.fillText("GAME OVER...", playerX + 50, playerY - 100, );
-                clearInterval(id1);
+                box.fillText("GAME OVER...", 250, 150, );
               }, 10);
         }
 }
